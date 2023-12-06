@@ -6,7 +6,7 @@ import DateComponent from './DateComponent';
 
 
 const InformationForm = () => {
-    
+    const testGit=0;
     return (
       <View>
         <InformationFormHeader/>
