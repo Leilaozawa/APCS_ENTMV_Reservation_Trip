@@ -196,7 +196,7 @@ const VoyageForm = () => {
 
           <View style={styles.passagerLine}>
             <View style={styles.passagerInfo}>
-            <Image source={require('../Assets/remorque.png')}/>
+            <Image source={require('../Assets/remorque.png')}/> 
             <View style={styles.passagerText}>
               <Text style={styles.typePassager}>Remorque</Text>
             </View>
@@ -313,7 +313,7 @@ const styles = StyleSheet.create({
   },
   submitButtonContainer: {
     alignItems: 'flex-end', // Align to the right
-    marginTop: 10, // Adjust the margin as needed
+    marginTop: 10, 
   },
   submitButton: {
     backgroundColor: '#0f387a',

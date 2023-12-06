@@ -3,21 +3,25 @@ import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 import InformationFormHeader from './InformationFormHeader';
 import { Formik } from 'formik';
 import DateComponent from './DateComponent';
+import ProgressBarForm from './ProgressBarForm';
+import { ScrollView } from 'react-native-gesture-handler';
 
 
 const InformationForm = () => {
     const testGit=0;
     return (
-      <View>
+      <ScrollView>
+        <ProgressBarForm/>
         <InformationFormHeader/>
 
-        <View style={styles.container}>
+       
           <Formik
             initialValues={{ sexe: '', nom: '', prenom: '', date: '', lieu:'', passeport:'' }}
             onSubmit={values => console.log(values)}
           >
             {({ handleChange, handleBlur, handleSubmit, values }) => (
               <>
+              <View style={styles.container}>
               <View>
                 <View style={styles.rightContainer}>
                   <Text style={styles.etoile}>* </Text>
@@ -75,24 +79,55 @@ const InformationForm = () => {
                 />
 
               </View>
+              </View>
+
+
+              <InformationFormHeader/>
+              <View style={styles.containerColumns}>
+                <View style={styles.containerColumnsElements}>
+                  <View style={styles.rightContainer}>
+                    <Text style={styles.etoile}>* </Text>
+                    <Text>Prénom</Text>
+                  </View>
+                  <TextInput
+                    onChangeText={handleChange('prenom')}
+                    onBlur={handleBlur('prenom')}
+                    value={values.prenom}
+                    style={styles.inputText}
+                  />
+                </View>
+                <View>
+                  <View style={styles.rightContainer}>
+                    <Text style={styles.etoile}>* </Text>
+                    <Text>Prénom</Text>
+                  </View>
+                  <TextInput
+                    onChangeText={handleChange('prenom')}
+                    onBlur={handleBlur('prenom')}
+                    value={values.prenom}
+                    style={styles.inputText}
+                  />
+                </View>
+              </View>
+
               <View style={styles.passagersContainer}>
                   <View>
-                    <Text style={styles.passagers}>Coordonées du réservant</Text>
+                    <Text style={styles.passagers}>Coordonées du véhicule</Text>
                   </View>
                   <View style={styles.rightContainer}>
                     <Text style={styles.etoile}>*</Text>
                     <Text>Champs Obligatoire</Text>
                   </View>
-                </View>
+              </View>
                 
                 <Button onPress={handleSubmit} title="Réserver" />
               </>
+
             )}
-          </Formik>
+          
+        </Formik>
 
-        </View>
-
-      </View>
+      </ScrollView>
     
   );
 }
@@ -118,6 +153,16 @@ const styles = StyleSheet.create({
   rightContainer:{
     display: 'flex',
     flexDirection: 'row',
+  },
+  containerColumns:{
+    display: 'flex',
+    paddingHorizontal: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%'
+  },
+  containerColumnsElements:{
+    width: '47%',
   },
   etoile:{
     color: 'red',

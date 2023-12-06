@@ -1,6 +1,5 @@
 
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
-import ProgressBarForm from './ProgressBarForm';
 
 
 
@@ -9,7 +8,7 @@ const InformationFormHeader = () => {
 
     return (
       <View>
-        <ProgressBarForm/>
+
 
         <View style={styles.passagersContainer}>
           <View>
