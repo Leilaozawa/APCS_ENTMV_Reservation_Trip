@@ -3,20 +3,20 @@ import React from 'react';
 import { Text, View, TextInput, Image, TouchableOpacity, ImageBackground } from 'react-native';
 import { Formik } from 'formik'
 //Styles
-import { styles } from '../../Styles/Login'
+import { styles } from '../Styles/Login'
 import { useRouter } from 'expo-router';
 
 const Login = (/*{ navigation: { navigate } }*/) => {
   const router = useRouter();  
   return (
       <ImageBackground
-        source={require('../../Assets/middleOfTheSea.jpg')}
+        source={require('../Assets/middleOfTheSea.jpg')}
         style={styles.backgroundImage}
       >
         <View style={styles.container}>
           {/* Logo */}
           <View style={styles.logoContainer}>
-            <Image source={require('../../Assets/logo-entmv.png')} style={styles.logo} />
+            <Image source={require('../Assets/logo-entmv.png')} style={styles.logo} />
           </View>
           
           {/* Form */}

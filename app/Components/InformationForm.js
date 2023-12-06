@@ -74,9 +74,6 @@ const InformationForm = () => {
                   style={styles.inputText}
                 />
 
-                
-
-                
               </View>
               <View style={styles.passagersContainer}>
                   <View>

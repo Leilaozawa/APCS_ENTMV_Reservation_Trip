@@ -8,10 +8,7 @@ export default function Page() {
   const router = useRouter();
   return ( 
     <View>
-      <Button onPress={()=> router.push('/Navigation/Screens/Welcome')} title="open welcome page"></Button>
-      <Link href={'/Navigation/Screens/Home'}>
-      <Button title="open register"></Button>
-      </Link>
+      <Button onPress={()=> router.push('/Components/Welcome')} title="open welcome page"></Button>
     </View>
   );
 }
