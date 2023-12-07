@@ -4,15 +4,16 @@ import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
 
 
-const InformationFormHeader = () => {
-
+const InformationFormHeader = (props) => {
+    const {type} = props;
     return (
+      
       <View>
 
 
         <View style={styles.passagersContainer}>
           <View>
-            <Text style={styles.passagers}>Passager(s)</Text>
+            <Text style={styles.passagers}>{type}</Text>
           </View>
           <View style={styles.rightContainer}>
             <Text style={styles.etoile}>*</Text>

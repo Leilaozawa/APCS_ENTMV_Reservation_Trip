@@ -5,14 +5,15 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 //styles
 import { styles } from '../Styles/ProgressBarForm'
 
-const ProgressBarForm = () => {
+const ProgressBarForm = (props) => {
+  const {hebergementColor, informationsColor, paiementColor} = props;
     return (
       <View style={styles.container}>
-        <Text>HÉBERGEMENT</Text>
+        <Text style={{color: hebergementColor}}>HÉBERGEMENT</Text>
         <Ionicons name="chevron-forward-outline" size={20} color="blue" />
-        <Text>INFORMATIONS</Text>
+        <Text style={{color: informationsColor}}>INFORMATIONS</Text>
         <Ionicons name="chevron-forward-outline" size={20} color="blue" />
-        <Text>PAIEMENT</Text>
+        <Text style={{color: paiementColor}}>PAIEMENT</Text>
       </View>
     
   );
