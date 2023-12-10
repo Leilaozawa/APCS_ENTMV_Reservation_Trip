@@ -213,16 +213,16 @@ const InformationForm = () => {
 
               </View>
 
-              {/*-------------------VIN--------------------*/}
+              {/*-------------------Propriaitaire--------------------*/}
                 <View style={styles.container}>
                     <View style={styles.rightContainer}>
                       <Text style={styles.etoile}>* </Text>
-                      <Text>Numéro de châssis (VIN)</Text>
+                      <Text>Propriétaire</Text>
                     </View>
                     <TextInput
-                      onChangeText={handleChange('vin')}
-                      onBlur={handleBlur('vin')}
-                      value={values.vin}
+                      onChangeText={handleChange('proprietaire')}
+                      onBlur={handleBlur('proprietaire')}
+                      value={values.proprietaire}
                       style={styles.inputText}
                     />
                 </View>              
