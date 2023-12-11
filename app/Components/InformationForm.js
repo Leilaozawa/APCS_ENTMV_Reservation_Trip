@@ -4,10 +4,12 @@ import { Formik } from 'formik';
 import DateComponent from './DateComponent';
 import ProgressBarForm from './ProgressBarForm';
 import { ScrollView } from 'react-native-gesture-handler';
+import { useRouter } from 'expo-router';
 
 
 const InformationForm = () => {
     const allerSimple="true"; //Cette variable sera supp par la suite et sera remplacé par le state de isAllerSimple su'on extrait du component VoyageForm
+    const router =useRouter()
     return (
       <ScrollView>
         
@@ -16,7 +18,7 @@ const InformationForm = () => {
         <InformationFormHeader type="Passager(s)"/>
        
           <Formik
-            initialValues={{ sexe: '', nom: '', prenom: '', date: '', lieu:'', passeport:'', email:'', telephone:'' }}
+            initialValues={{ sexe: '', nom: '', prenom: '', date: '', lieu:'', passeport:'', email:'', telephone:'', marque: '', immatriculation:'', vin:'', conducteurAller: '', ConducteurRetour:'', proprietaire:'' }}
             onSubmit={values => console.log(values)}
           >
             {({ handleChange, handleBlur, handleSubmit, values }) => (
@@ -227,7 +229,11 @@ const InformationForm = () => {
                     />
                 </View>              
               
-              <Button onPress={handleSubmit} title="Réserver" />
+              <Button onPress={() => {
+                handleSubmit;
+                router.push('/Components/PaiementForm')
+                }}
+                title="Réserver" />
               </>
 
             )}

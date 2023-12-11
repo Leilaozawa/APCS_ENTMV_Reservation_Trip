@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native';
 
-const PaymentForm = () => {
+const PaiementForm = () => {
     return (
         <View>
             <Text>This is the payment form.</Text>
@@ -8,4 +8,4 @@ const PaymentForm = () => {
     );
 };
 
-export default PaymentForm;
+export default PaiementForm;

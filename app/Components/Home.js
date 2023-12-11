@@ -4,7 +4,6 @@ import { ScrollView, View } from 'react-native';
 
 //components
 import InformationForm from './InformationForm';
-import PaymentForm from './PaymentForm';
 import HebergementForm from './HebergementForm';
 
 
