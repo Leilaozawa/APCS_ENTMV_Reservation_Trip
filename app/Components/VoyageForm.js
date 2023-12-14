@@ -1,13 +1,35 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView, Modal, Button } from 'react-native';
 import { useRouter } from 'expo-router';
 import RNPickerSelect from 'react-native-picker-select';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import DateComponent from './DateComponent';
 import Line from './Line';
+import useVoyageStore from '../Store/useVoyageStore';
+import useTarifStore from '../Store/useTarifStore';
+import useAdulteStore from '../Store/useAdulteStore';
+import useDestinationAllerStore from '../Store/useDestinationAllerStore';
+
+//style:
+import {styles} from '../Styles/VoyageForm'
 
 const VoyageForm = () => {
   const router = useRouter();
+  const { setVoyageInfo } = useVoyageStore();
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const { setTarif } = useTarifStore();
+  const { setAdulte } = useAdulteStore();
+  const { setDestinationAller } = useDestinationAllerStore();
+
+  const openModal = () => {
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
+
 
   const [isPassagersVisible, setIsPassagersVisible] = useState(false);
   const [vehiculeVisible, setVehiculeVisible] = useState(false);
@@ -35,7 +57,8 @@ const VoyageForm = () => {
 
 
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
+    <ScrollView style={styles.scrollContainer}>
       <View style={styles.headerContainer}>
         <Ionicons name={'boat-sharp'} size={30} color={'#FF9100'} />
         <Text style={styles.headerText}>Voyage</Text>
@@ -67,7 +90,7 @@ const VoyageForm = () => {
       <View style={styles.inputText}>
         <RNPickerSelect
           placeholder={{ label: 'Choisissez votre voyage', value: null }}
-          onValueChange={(value) => console.log(value)}
+          onValueChange={(value) => setDestinationAller(value)}
           items={destinationsAller}
           style={styles.inputText}
         />
@@ -88,12 +111,11 @@ const VoyageForm = () => {
       <View style={styles.inputText}>
         <RNPickerSelect
           placeholder={{ label: 'Séléctionnez votre tarif', value: null }}
-          onValueChange={(value) => console.log(value)}
+          onValueChange={(value) => setTarif(value)}
           items={tarifs}
           style={styles.inputText}
         />
       </View>
-
       <TouchableOpacity style={styles.inputNoSelect} onPress={()=> setIsPassagersVisible(!isPassagersVisible)}>
         <Text style={styles.inputNoSelectText}>Passagers</Text>
       </TouchableOpacity>
@@ -111,7 +133,7 @@ const VoyageForm = () => {
             <View style={styles.pickerTest}>
               <RNPickerSelect
                 placeholder={{ label: '0', value: null }}
-                onValueChange={(value) => console.log(value)}
+                onValueChange={(value) => setAdulte(value)}
                 items={Passagers}
               />
             </View>
@@ -168,11 +190,12 @@ const VoyageForm = () => {
             </View>
           </View>
           
+
           
         </View>
       }
 
-<TouchableOpacity style={styles.inputNoSelect} onPress={()=> setVehiculeVisible(!vehiculeVisible)}>
+      <TouchableOpacity style={styles.inputNoSelect} onPress={()=> setVehiculeVisible(!vehiculeVisible)}>
         <Text style={styles.inputNoSelectText}>Véhicules</Text>
       </TouchableOpacity>
 
@@ -262,140 +285,17 @@ const VoyageForm = () => {
         </View>
       }
         <View style={styles.submitButtonContainer}>
-        <TouchableOpacity style={styles.submitButton} onPress={() => router.push('/Components/Home')}>
+        <TouchableOpacity style={styles.submitButton} onPress={() => {
+          router.push('/Components/Home')}}>
           <Text style={styles.textSubmitButton}>Chercher</Text>
         </TouchableOpacity>
         </View>
 
       </View>
     </ScrollView>
+    </View>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    marginTop: 25,
-  },
-  headerContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    textAlign: 'center',
-  },
-  trajectoireContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginHorizontal: 50,
-    backgroundColor: '#F2F2F2',
-    borderRadius: 20,
-    marginTop: 20,
-    overflow: 'hidden', // To hide the overflow when the selected button moves
-  },
-  trajectoireButtons: {
-    flex: 1,
-    paddingVertical: 20,
-    alignItems: 'center',
-  },
-  selectedButton: {
-    backgroundColor: '#FF9100',
-  },
-  buttonText: {
-    color: '#fff', 
-  },
-  headerText: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginLeft: 10,
-  },
-  formContainer: {
-    marginTop: 30,
-    paddingHorizontal: 20,
-  },
-  submitButtonContainer: {
-    alignItems: 'flex-end', // Align to the right
-    marginTop: 10, 
-  },
-  submitButton: {
-    backgroundColor: '#0f387a',
-    borderRadius: 5,
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-  },
-  textSubmitButton: {
-    color: '#fff',
-    fontSize: 14,
-    fontWeight: 'bold',
-  },
-  inputText: {
-    borderWidth: 1,
-    borderColor: '#0f387a',
-    borderRadius: 5,
-    marginTop: 10,
-    marginBottom: 10,
-  },
-  allerRetourView:{
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '100%'
-  },
-  elementAllerRetourView:{
-    width: "47%"
-  },
-  inputNoSelect: {
-    borderWidth: 1,
-    borderRadius: 4,
-    borderColor: '#0f387a',
-    height: 50,
-    paddingLeft: 15,
-    justifyContent: 'center',
-    marginBottom: 10,
-    fontSize: 16,
-  },
-  inputNoSelectText:{
-    color: '#C5C5C5',
-    fontSize: 16,
-  },
-  hiddenPassagerContainer: {
-    borderWidth: 1,
-    borderRadius: 4,
-    borderColor: '#FF9100',
-    paddingLeft: 8,
-    fontSize: 18,
-    justifyContent: 'center',
-    marginBottom: 10,
-  },
-  passagerLine:{
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginVertical: 5,
-    marginHorizontal: 10
-  },
-  passagerInfo:{
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  passagerText:{
-    marginLeft: 15,
-  },
-  typePassager:{
-    fontSize: 16,
-    fontWeight: 'bold'
-  },
-  detailsTypePassager:{
-
-  },
-  pickerTest:{
-    width: 100,
-    borderWidth: 1,
-    borderColor: '#0f387a',
-    borderRadius: 5,
-    margin: 5,
-  },
-
-
-  
-});
 
 export default VoyageForm;

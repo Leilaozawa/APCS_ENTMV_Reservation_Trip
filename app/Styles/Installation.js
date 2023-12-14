@@ -2,18 +2,24 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-        container:{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: 'space-between',
-            margin: 20,
+    container: {
+        flex: 1,
+        flexDirection: 'column',
+      },
+      scrollView: {
+        flex: 1,
+      },
+    buttonsContainer:{
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: 'space-between',
+        margin: 20,
     },
     leftButton:{
         backgroundColor: '#0f387a',
         borderRadius: 5,
         paddingVertical: 10,
         paddingHorizontal: 15,
-    
     },
     textLeftButton:{
         color: '#fff',
@@ -31,5 +37,6 @@ export const styles = StyleSheet.create({
         color: '#0f387a',
         fontSize: 14,
         fontWeight: 'bold',
-    }
+    },
+
 });

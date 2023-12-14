@@ -7,12 +7,15 @@ import { useRouter } from 'expo-router';
 
 //style
 import { styles } from '../Styles/Installation'
+import Recapitulatif from './Recapitulatif';
 
 
 const Installation = () => {
   const router = useRouter();  
   return (
-    <ScrollView>
+    <>
+    <View style={styles.container}>
+    <ScrollView style={styles.scrollView}>
       <InstallationCard iconColor="#81BB00" iconName="sofa" type="Fauteuil" dispo="Dispo159" price="159,00" />
 
       <InstallationCard iconColor="#FF0000" iconName="bed" type="Bed" dispo="Dispo99" price="99,00" />
@@ -23,7 +26,11 @@ const Installation = () => {
 
       <InstallationCard iconColor="#81BB00" iconName="sofa" type="Fauteuil" dispo="Dispo159" price="159,00" />
 
-      <View style={styles.container}>
+      <InstallationCard iconColor="#81BB00" iconName="sofa" type="Fauteuil" dispo="Dispo159" price="159,00" />
+
+      <InstallationCard iconColor="#81BB00" iconName="sofa" type="Fauteuil" dispo="Dispo159" price="159,00" />
+
+      <View style={styles.buttonsContainer}>
         <TouchableOpacity style={styles.leftButton}>
           <Text style={styles.textLeftButton}>Précedent</Text>
         </TouchableOpacity>
@@ -31,8 +38,11 @@ const Installation = () => {
         <Text style={styles.textRightButton}>Valider votre trajet</Text>
         </TouchableOpacity>
       </View>
-
+      
     </ScrollView>
+    </View>
+    <Recapitulatif/>
+    </>
   );
 };
 
