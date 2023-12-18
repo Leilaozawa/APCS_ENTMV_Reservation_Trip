@@ -4,6 +4,7 @@ import { styles } from '../Styles/Recapitulatif';
 import useTarifStore from '../Store/useTarifStore';
 import useAdulteStore from '../Store/useAdulteStore';
 import useDestinationAllerStore from '../Store/useDestinationAllerStore';
+import useDateAllerStore from '../Store/useDateAllerStore';
 
 
 const Recapitulatif = () => {
@@ -11,6 +12,7 @@ const Recapitulatif = () => {
   const { tarif } = useTarifStore(); // Import tarif from the store
   const { adulte } = useAdulteStore();
   const { destinationAller } = useDestinationAllerStore();
+  const { dateAller } = useDateAllerStore();
   const openModal = () => {
     setModalVisible(true);
   };
@@ -48,6 +50,7 @@ const Recapitulatif = () => {
             <View style={styles.prix}>
               <View style={styles.prixAllerRetour}>
                 <View style={styles.prixAller}>
+                  <Text>date: {String(dateAller)}</Text>
                   <Text style={styles.whiteText}>Devis aller :</Text>
                   <Text style={styles.whiteText}>881,00 EUR</Text>
                 </View>

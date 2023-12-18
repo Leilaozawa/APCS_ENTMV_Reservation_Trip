@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
     containerWithHiddenSection: {
-        flex: 1,
+        display: 'flex',
         flexDirection: 'column'
     },
     container: {

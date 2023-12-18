@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Text, View, StyleSheet, Platform, TouchableOpacity, Modal } from 'react-native';
 import DatePicker from 'react-native-modern-datepicker';
 import { getFormatedDate } from 'react-native-modern-datepicker';
+import useDateAllerStore from '../Store/useDateAllerStore';
 
 const DateComponent = (props) => {
   const [openStartDatePicker, setOpenStartDatePicker] = useState(false);
@@ -9,6 +10,9 @@ const DateComponent = (props) => {
   const startDate = getFormatedDate(today.setDate(today.getDate() + 1), 'YYYY/MM/DD');
   const [selectedStartDate, setSelectedStartDate] = useState('');
   const [startedDate, setStartedDate] = useState('12/12/2023');
+
+  const { setDateAller } = useDateAllerStore();
+
 
   function handleChangeStartDate(propDate) {
     setStartedDate(propDate);
@@ -48,6 +52,7 @@ const DateComponent = (props) => {
                 borderColor: '#0f387a',
               }}
             />
+            {/*i have to set here*/}
             {console.log(selectedStartDate)}
             <TouchableOpacity onPress={handleOnPressStartDate}>
               <Text style={{ color: '#0f387a' }}>Close</Text>

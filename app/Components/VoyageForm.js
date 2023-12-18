@@ -286,7 +286,7 @@ const VoyageForm = () => {
       }
         <View style={styles.submitButtonContainer}>
         <TouchableOpacity style={styles.submitButton} onPress={() => {
-          router.push('/Components/Home')}}>
+          router.push('/Components/HebergementForm')}}>
           <Text style={styles.textSubmitButton}>Chercher</Text>
         </TouchableOpacity>
         </View>

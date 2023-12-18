@@ -12,13 +12,14 @@ const InformationForm = () => {
     const allerSimple="true"; //Cette variable sera supp par la suite et sera remplacé par le state de isAllerSimple su'on extrait du component VoyageForm
     const router =useRouter();
     return (
-      <ScrollView>
+      <>
+      <ScrollView style={styles.informationScreen}>
         
         <ProgressBarForm hebergementColor= 'grey' informationsColor='black' paiementColor='grey'/>
 
         <InformationFormHeader type="Passager(s)"/>
        
-          <Formik
+        <Formik
             initialValues={{ sexe: '', nom: '', prenom: '', date: '', lieu:'', passeport:'', email:'', telephone:'', marque: '', immatriculation:'', vin:'', conducteurAller: '', ConducteurRetour:'', proprietaire:'' }}
             onSubmit={values => console.log(values)}
           >
@@ -232,7 +233,7 @@ const InformationForm = () => {
               
               <Button onPress={() => {
                 handleSubmit;
-                router.push('/Components/Test')
+                router.push('/Components/PaiementForm')
                 }}
                 title="Réserver" />
               </>
@@ -241,9 +242,10 @@ const InformationForm = () => {
           
         </Formik>
 
-        <Recapitulatif/>
       </ScrollView>
-    
+
+      <Recapitulatif/>
+      </>
   );
 }
 
@@ -251,6 +253,9 @@ export default InformationForm;
 
 
 const styles = StyleSheet.create({
+  informationScreen:{
+    marginBottom: 75,
+  },
   passagersContainer: {
     display: 'flex',
     flexDirection: 'row',

@@ -2,13 +2,10 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-    container: {
-        flex: 1,
+    container:{
+        display: 'flex',
         flexDirection: 'column',
-      },
-      scrollView: {
-        flex: 1,
-      },
+    },
     buttonsContainer:{
         display: "flex",
         flexDirection: "row",
